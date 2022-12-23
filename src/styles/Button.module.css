@@ -9,6 +9,10 @@
     min-width: 75px;
   }
   
+  .btn {
+    background-color:#C10000 !important;
+  }
+
   .Button:hover {
     opacity: 0.8;
     border-color: transparent;
