@@ -2,8 +2,8 @@
 import { Container } from 'react-bootstrap';
 import styles from './App.module.css';
 import NavBar from "./components/NavBar";
-import {Route, Switch} from 'react-router-dom'
-import "./api/axiosDefault"
+import {Route, Switch} from 'react-router-dom';
+import "./api/axiosDefault";
 import SignUpForm from './pages/auth/SignUpForm';
 
 function App() {
