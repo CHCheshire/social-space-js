@@ -8,6 +8,13 @@ import { useCurrentUser } from "../contexts/CurrentUserContext";
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
+  const addPostIcon = (
+    <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/post/create"
+      ><i className="fa-solid fa-pen"></i>Add Post</NavLink>
+  )
   const loggedInIcons = <>{currentUser?.username}</>;
   const loggedOutIcons = (
     <>
@@ -36,7 +43,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="250" />
           </Navbar.Brand>
         </NavLink>
-
+        {currentUser && addPostIcon}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto text-left">
