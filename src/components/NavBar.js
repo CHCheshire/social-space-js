@@ -4,6 +4,7 @@ import logo from "../assets/logo.jpg";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -15,7 +16,35 @@ const NavBar = () => {
         to="/post/create"
       ><i className="fa-solid fa-pen"></i>Add Post</NavLink>
   )
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const loggedInIcons = <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/feed"
+      >
+        <i className="fas fa-stream"></i>Feed
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/liked"
+      >
+        <i className="fas fa-heart"></i>Liked
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to="/"
+        onClick={() => {}}
+      >
+        <i className="fas fa-sign-out-alt"></i>Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+      </NavLink></>;
   const loggedOutIcons = (
     <>
       <NavLink
