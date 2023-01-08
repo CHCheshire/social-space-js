@@ -225,8 +225,10 @@ In the Deploy tab:
 
 ### Credits 
 
-Huge thanks to Tim Nelson as my mentor and to Matt Rudge for the CodeStar blog videos. Would also like to thank the Slack Community for their help on this project as well.
+Thanks to Adam Lapinski for the Moments and Rest Framework guides. Would also like to thank Gemma and Jason for trying to help me with the Sign In issues with my project as well. 
 
 ### Media
 
-Default image for blog posts ![Default-image](documentation/default.png)
+Logo in the top left hand corner: (https://library.kissclipart.com/20180915/kfw/kissclipart-bonfire-clipart-campfire-bonfire-clip-art-32cc703488dbc689.jpg)
+
+Adventures wanted logo: (https://scontent.fltn3-1.fna.fbcdn.net/v/t1.6435-9/58717903_307655179902328_5817799846886637568_n.png?stp=dst-png_p180x540&_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=eBe5sIc51IkAX_4dCwT&_nc_ht=scontent.fltn3-1.fna&oh=00_AfCA-7iYcakmQMWgo3tS9QoGord1w6RbPxXYKbNUvATPng&oe=63E2A628)
