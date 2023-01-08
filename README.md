@@ -1,70 +1,232 @@
-# Getting Started with Create React App
+# Social Space
+ 
+The Social Space is designed to be where users can make posts and reviews about TV Shows, Games, Boardgames and other things they like and then search for those by tags. They can also make a profile and detail it with a bio and profile picture.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Home page](documentation/homepage.png)
 
-## Available Scripts
+## Features 
 
-In the project directory, you can run:
+### Existing Features
 
-### `npm start`
+- __Navigation Bar__
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  There's a nav bar at the top of the screen to got to the different screens, so from here you can go to the homepage, sign in and sign out and they can also make posts and reviews when signed in. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Nav Bar](documentation/nav-bar.png)
 
-### `npm test`
+- __The posts__
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Users will be able to make posts whereby they will fill out a form. This form will allow them to type out the body of their post, title it, add an image and add a tag to it as well. This tag is used to search for different posts and differeniate them from posts about different things.
 
-### `npm run build`
+- __Login Page__
+  This is where users who have made an account can sign in and from there they can create posts and reviews, edit their profile and comment on posts and reviews as well.
+ 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Login](documentation/sign-in.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- __Register page__
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Before the user can login, they must register and sign up to the website. They will have to enter a username and secure password. 
 
-### `npm run eject`
+![Register](documentation/sign-up.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- __Logout__
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  If the user wants, they also have the option to sign out of their account too.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- __A Blog Post__
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  So here is a blog post itself: The title and image are held within a masthead at the top and the body of the blog itself is below. If an image wasn't selected, it would default to a standard image.
 
-## Learn More
+![A blog post](documentation/post.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- __Review__ 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  A review is set up very similarly to the blog post but asks for different information. It requires the user to put in a rating out of 10 for the thing they're reviewing.
 
-### Code Splitting
+![Comment](documentation/comment.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+-__Edit Profile__
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  Here is where the user can edit their profile if they so wish, changing the image and their name. 
+![Edit-Profile](documentation/edit-profile.png)
 
-### Making a Progressive Web App
+## Testing 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ So this program does have a major issue in that users can't sign in. This sadly breaks the project all together and is why I have pictures of the API posts rather than the actual posts on the app. I have tried for over 10 hours to fix this bug and have had two four hour sessions with tutor support to try and fix this but no joy. It looks to be that this error stems from the settings.py file in my Django API however where exactly is unclear. I have added several different things to that file but nothing seems to be working. The error that appears was a CORS error, when the API is blocked as it sees it as a dangerous URL essentially and blocks communication between the two. In order to get around this, I have tried many things: I have edit the config vars on Heroku, made sure I've got everything installed and set up properly in the settings.py file. I have also tried removing the 'CLIENT_ORIGIN' on Heroku which got me a different error but an error nonetheless. 
 
-### Advanced Configuration
+![Sign-In-Error](documentation/sign-in-error.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+As mentioned, this is sadly project breaking; If users can't sign in, they can't interact with the website in anyway. I can only say that everything should work in theory however that clearly isn't the case. 
 
-### Deployment
+Other forms of testing I've done is made sure that things scale down for mobile users which it does thanks to Bootstrap. The website pages that are available scale down to mobile views nicely and are easily accessible on different screen sizes as well. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Sign-in-mobile](documentation/sign-in-mobile.png)
 
-### `npm run build` fails to minify
+## Data Models 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  I had several data models for this project: Post, Reviews and Profile. 
+
+  Post: This data model was used for actually making the posts on the website itself; It consists of a Title, Content, Profile_id of the author, a Featured Image and the Post Tag. It also captures who the author for authentication purposes and when the post was created and last updated. This all allows the author to put on to the post all the information needed as well them and only them being able to edit their posts. This is so that random users can't hop on and edit other people's post. 
+
+  ![data-post](documentation/post-data.png)
+
+  Reviews: Reviews are similar to posts but have difference in their data model and intended user. These contain the Author, Title, Content, a Post Tag and a Review Score as well. These also hold the data for when it was created and when it was last updated as well. These also have the safety feature of only allowing the author to edit them. 
+
+  ![data-review](documentation/review-data.png)
+
+  Profile: This data model allows users to create profiles, attaching a profile picture and a bio to it as well. 
+
+  ![data-profile](documentation/profile-data.png)
+
+ ### Agile methodology
+
+ For the Agile Methodology, I used the project board on github to plan out my project. For this, I had selected issues and moved them across to the corresponding column when they either being started, worked on or had been completed. I marked each of these as issues and also added comments to them were appropriate as well. Once these were added to the done section, I would mark these issues as closed as well. 
+
+ ![story-board](documentation/storyboard.png)
+
+
+
+### Validator Testing 
+
+  Code Validation:
+  To ensure all code for Gamernetic was correct, validation through various validators was performed. The results are listed below.
+
+  HTML:
+  Homepage: 
+
+  ![homepage-valid](documentation/homepage-valid.png)
+
+  Login:
+
+  ![login-valid](documentation/sign-in-valid.png)
+
+  Sign-up:
+
+   ![logout-valid](documentation/sign-up-valid.png)
+
+   CSS:
+
+   ![css-validation](documentation/css-validation.png)
+
+
+  Python: 
+
+  As of me testing this, the PEP8 validator is currently down so I am unable to validate my code throughout. As a workaround, I will use pycodestyle instead using the following method:
+
+  Run the command pip3 install pycodestyle  Note that this extension may already be installed, in which case this command will do nothing.
+
+  In your workspace, press Ctrl+Shift+P (or Cmd+Shift+P on Mac).
+
+  Type the word linter into the search bar that appears, and click on Python: Select Linter from the filtered results (image 1).
+
+  Select pycodestyle from the list (image 2).
+
+  PEP8 errors will now be underlined in red, as well as being listed in the PROBLEMS tab beside your terminal.
+
+  Using this method, here were the results from my validator testing: 
+
+  Validation of API: 
+
+  ![valid-api](documentation/valid-api.png)
+
+
+  Browser Testing:
+
+  My website successfully loads on Edge, Chrome and Firefox. 
+
+  ![chrome-test](documentation/chrome-test.png)
+  ![firefox-test](documentation/firefox-test.png)
+  ![edge-test](documentation/edge-test.png)
+
+### Languages
+   - Python
+   - JavaScript
+   - HTML5
+   - CSS3
+
+### Frameworks, Libraries, Programs
+- Python Built-in Modules:
+  - [os](https://docs.python.org/3/library/os.html) 
+
+- External Packages
+  - [cloudinary](https://pypi.org/project/cloudinary/1.29.0/) 
+  - [crispy-bootstrap5](https://pypi.org/project/crispy-bootstrap5/0.6/) 
+  - [dj-database-url](https://pypi.org/project/dj-database-url/0.5.0/) 
+  - [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/0.0.6/) 
+  - [Django](https://pypi.org/project/Django/3.2.14/) 
+  - [django-allauth](https://pypi.org/project/django-allauth/0.51.0/)
+  - [django-crispy-forms](https://pypi.org/project/django-crispy-forms/1.14.0/) 
+  - [gunicorn](https://pypi.org/project/gunicorn/20.1.0/)
+  - [psycopg2](https://pypi.org/project/psycopg2/2.9.3/) 
+
+### Programs & Tools
+
+- [Google Fonts:](https://fonts.google.com/)
+  - Was used to to incorporate font styles.  
+- [Bootstrap](https://getbootstrap.com/)
+  - Was used to create the front-end design.
+- [GitPod:](https://gitpod.io/)
+  - Gitpod was used as IDE to commit and push the project to GitHub.
+- [GitHub:](https://github.com/)
+  - Was used for all storing and backup of the code pertaining to the project.
+  ## Deployment
+
+### Forking the GitHub Repository
+1. Go to [the project repository](hhttps://github.com/CHCheshire/social-space-js)
+2. In the right most top menu, click the "Fork" button.
+3. There will now be a copy of the repository in your own GitHub account.
+
+
+### Running the project locally
+1. Go to [the project repository](https://github.com/CHCheshire/social-space-js)
+2. Click on the "Code" button.
+3. Choose one of the three options (HTTPS, SSH or GitHub CLI) and then click copy.
+4. Open the terminal in you IDE program. 
+5. Type `git clone` and paste the URL that was copied in step 3.
+6. Press Enter and the local clone will be created. 
+
+### Alternatively by using Gitpod:
+1. Go to [the project repository](https://github.com/CHCheshire/social-space-js)
+2. Click the green button that says "Gitpod" and the project will now open up in Gitpod.
+
+### Deploying with Heroku
+
+I followed the below steps using the Code Institute tutorial:
+
+The following command in the Gitpod CLI will create the relevant files needed for Heroku to install your project dependencies `pip3 freeze --local > requirements.txt`. Please note this file should be added to a .gitignore file to prevent the file from being committed.
+
+1. Go to [Heroku.com](https://dashboard.heroku.com/apps) and log in; if you do not already have an account then you will need to create one.
+2. Click the `New` dropdown and select `Create New App`.
+3. Enter a name for your new project, all Heroku apps need to have a unique name, you will be prompted if you need to change it.
+4. Select the region you are working in.
+
+#### Heroku Settings  
+You will need to set your Environment Variables - this is a key step to ensuring your application is deployed properly.
+1. In the Settings tab, click on `Reveal Config Vars` and set the following variables:
+    - Add key: `PORT` & value `8000`
+    - Add key: DATABASE_URL, this should have been created automatically by Heroku.
+    - Add key: CLOUDINARY_URL and the value as your cloudinary API Environment variable e.g.
+    - Add key: SECRET_KEY and the value as a complex string which will be used to provide cryptographic signing.
+
+2. Buildpacks are also required for proper deployment, simply click `Add buildpack` and search for the ones that you require.
+    - For this project, I needed to add `Python`.
+
+####  Heroku Deployment  
+In the Deploy tab:
+1. Connect your Heroku account to your Github Repository following these steps:
+    - Click on the `Deploy` tab and choose `Github-Connect to Github`.
+    - Enter the GitHub repository name and click on `Search`.
+    - Choose the correct repository for your application and click on `Connect`.
+2. You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
+3. Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should now see the `View` button, click this to open your application.
+
+
+### Credits 
+
+Huge thanks to Tim Nelson as my mentor and to Matt Rudge for the CodeStar blog videos. Would also like to thank the Slack Community for their help on this project as well.
+
+### Media
+
+Default image for blog posts ![Default-image](documentation/default.png)
