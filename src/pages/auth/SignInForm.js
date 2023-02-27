@@ -15,11 +15,11 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import { useRedirect } from "../../hooks/useRedirect"
+import { useRedirect } from "../../hooks/useRedirect";
 
 function SignInForm() {
-    const setCurrentUser = useSetCurrentUser();
-    useRedirect("loggedIn");
+  const setCurrentUser = useSetCurrentUser();
+  useRedirect("loggedIn");
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -39,6 +39,8 @@ function SignInForm() {
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
+      console.log(errors)
+      console.log(err)
     }
   };
 
@@ -66,11 +68,11 @@ function SignInForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.username?.map((message, idx) => (
+            {/*errors.username?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
-            ))}
+            ))*/}
 
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
@@ -83,22 +85,22 @@ function SignInForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.password?.map((message, idx) => (
+            {/* {errors.password?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
-            ))}
+            ))} */}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.btn}`}
               type="submit"
             >
               Sign in
             </Button>
-            {errors.non_field_errors?.map((message, idx) => (
+            {/* {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
                 {message}
               </Alert>
-            ))}
+            ))} */}
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
