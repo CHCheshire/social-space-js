@@ -46,9 +46,9 @@ function PostPage({ message, filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className={styles.PostPanel}>
+    <Row className={styles.PostsPanel}>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p className={styles.Postearch}>Popular Post</p>
+        <p className={styles.PostSearch}>Popular Post</p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -67,13 +67,13 @@ function PostPage({ message, filter = "" }) {
           <>
             {post.results.length ? (
               <InfiniteScroll
-                children={Post.results.map((post) => (
+                children={post.results.map((post) => (
                   <Post key={post.id} {...post} setPost={setPost} />
                 ))}
-                dataLength={Post.results.length}
+                dataLength={post.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!Post.next}
-                next={() => fetchMoreData(Post, setPost)}
+                hasMore={!!post.next}
+                next={() => fetchMoreData(post, setPost)}
               />
             ) : (
               <Container className={appStyles.Content}>
