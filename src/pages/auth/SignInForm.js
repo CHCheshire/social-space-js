@@ -33,7 +33,7 @@ function SignInForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
+  try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       history.push("/");
@@ -74,9 +74,9 @@ function SignInForm() {
               </Alert>
             ))*/}
 
-            <Form.Group controlId="password">
-              <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control
+          <Form.Group controlId="password">
+            <Form.Label className="d-none">Password</Form.Label>
+            <Form.Control
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -84,7 +84,7 @@ function SignInForm() {
                 value={password}
                 onChange={handleChange}
               />
-            </Form.Group>
+          </Form.Group>
             {/* {errors.password?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
