@@ -17,18 +17,18 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
-function PostsPage({ message, filter = "" }) {
-  const [posts, setPosts] = useState({ results: [] });
+function PostPage({ message, filter = "" }) {
+  const [post, setPost] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchPost = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-        setPosts(data);
+        const { data } = await axiosReq.get(`/post/?${filter}search=${query}`);
+        setPost({...post, results: data });
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ function PostsPage({ message, filter = "" }) {
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchPosts();
+      fetchPost();
     }, 1000);
 
     return () => {
@@ -46,9 +46,9 @@ function PostsPage({ message, filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className={styles.PostsPanel}>
+    <Row className={styles.PostPanel}>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p className={styles.PostSearch}>Popular posts</p>
+        <p className={styles.Postearch}>Popular Post</p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -65,15 +65,15 @@ function PostsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {posts.results.length ? (
+            {post.results.length ? (
               <InfiniteScroll
-                children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
+                children={Post.results.map((post) => (
+                  <Post key={post.id} {...post} setPost={setPost} />
                 ))}
-                dataLength={posts.results.length}
+                dataLength={Post.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!posts.next}
-                next={() => fetchMoreData(posts, setPosts)}
+                hasMore={!!Post.next}
+                next={() => fetchMoreData(Post, setPost)}
               />
             ) : (
               <Container className={appStyles.Content}>
@@ -91,4 +91,4 @@ function PostsPage({ message, filter = "" }) {
   );
 }
 
-export default PostsPage;
+export default PostPage;
