@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
 
 .App {
-  font-family: "Moon Dance", sans-serif;
-  font-size: 48px;
-  background-color: #5F7D99;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  background-color: #333333;
   min-height: 100vh;
 }
 
@@ -12,7 +14,7 @@
 }
 
 .Content {
-  background-color: #ffffff;
+  background-color: #F5F5F5;
   padding: 10px;
   border-radius: 2px;
   border: 1px solid #dadadf;
