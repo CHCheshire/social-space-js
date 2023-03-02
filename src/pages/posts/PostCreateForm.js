@@ -25,9 +25,9 @@ function PostCreateForm() {
   const [postData, setPostData] = useState({
     title: "",
     content: "",
-    image: "",
+    featured_image: "",
   });
-  const { title, content, image } = postData;
+  const { title, content, featured_image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -41,10 +41,10 @@ function PostCreateForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
+      URL.revokeObjectURL(featured_image);
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
+        featured_image: URL.createObjectURL(event.target.files[0]),
       });
     }
   };
@@ -55,7 +55,7 @@ function PostCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
+    formData.append("featured_image", imageInput.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/post/", formData);
@@ -121,10 +121,10 @@ function PostCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
+              {featured_image ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
+                    <Image className={appStyles.Image} src={featured_image} rounded />
                   </figure>
                   <div>
                     <Form.Label
@@ -149,7 +149,7 @@ function PostCreateForm() {
 
               <Form.File
                 id="image-upload"
-                accept="image/*"
+                accept="featured-image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
               />

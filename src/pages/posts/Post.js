@@ -17,7 +17,7 @@ const Post = (props) => {
     like_id,
     title,
     content,
-    image,
+    featured_image,
     updated_at,
     postPage,
     setPost,
@@ -44,7 +44,7 @@ const Post = (props) => {
         </Media>
       </Card.Body>
       <Link to={`/post/${id}`}>
-        <Card.Img src={image} alt={title} />
+        <Card.Img src={featured_image} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
