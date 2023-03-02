@@ -13,7 +13,7 @@ const Comment = (props) => {
   const {
     profile_id,
     profile_image,
-    owner,
+    author,
     updated_at,
     content,
     id,
@@ -23,7 +23,7 @@ const Comment = (props) => {
 
   const [showEditForm, setShowEditForm] = useState(false);
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  const is_author = currentUser?.username === author;
 
   const handleDelete = async () => {
     try {
@@ -52,7 +52,7 @@ const Comment = (props) => {
           <Avatar src={profile_image} />
         </Link>
         <Media.Body className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
+          <span className={styles.Owner}>{author}</span>
           <span className={styles.Date}>{updated_at}</span>
           {showEditForm ? (
             <CommentEditForm
@@ -67,7 +67,7 @@ const Comment = (props) => {
             <p>{content}</p>
           )}
         </Media.Body>
-        {is_owner && !showEditForm && (
+        {is_author && !showEditForm && (
           <MoreDropdown
             handleEdit={() => setShowEditForm(true)}
             handleDelete={handleDelete}
