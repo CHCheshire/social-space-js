@@ -17,18 +17,18 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
-function PostPage({ message, filter = "" }) {
-  const [post, setPost] = useState({ results: [] });
+function PostsPage({ message, filter = "" }) {
+  const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchPosts = async () => {
       try {
         const { data } = await axiosReq.get(`/post/?${filter}search=${query}`);
-        setPost({...post, results: data });
+        setPosts({...posts, results: data });
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -37,13 +37,17 @@ function PostPage({ message, filter = "" }) {
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchPost();
+      fetchPosts();
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
   }, [filter, query, pathname]);
+
+  posts.results.map(function(post){
+    console.log(post)
+  })
 
   return (
     <Row className={styles.PostsPanel}>
@@ -65,15 +69,15 @@ function PostPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {post.results.length ? (
+            {posts.results.length ? (
               <InfiniteScroll
-                children={post.results.map((post) => (
-                  <Post key={post.id} {...post} setPost={setPost} />
+                children={posts.results.map((post) => (
+                  <Post key={post.id} {...post} setPosts={setPosts} />
                 ))}
-                dataLength={post.results.length}
+                dataLength={posts.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!post.next}
-                next={() => fetchMoreData(post, setPost)}
+                hasMore={!!posts.next}
+                next={() => fetchMoreData(posts, setPosts)}
               />
             ) : (
               <Container className={appStyles.Content}>
@@ -91,4 +95,4 @@ function PostPage({ message, filter = "" }) {
   );
 }
 
-export default PostPage;
+export default PostsPage;

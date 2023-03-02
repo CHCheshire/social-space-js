@@ -26,6 +26,9 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_author = currentUser?.username === author;
 
+  console.log('POST ID: ', id)
+  console.log('POST TITLE: ', title)
+
   return (
     <Card className={styles.Post}>
       <Card.Body>

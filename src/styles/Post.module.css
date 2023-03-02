@@ -5,6 +5,10 @@
     margin-bottom: 16px;
     text-align: center;
   }
+
+  .Post, p {
+      color:#555555
+  }
   
   .Post figure,
   h5 {
