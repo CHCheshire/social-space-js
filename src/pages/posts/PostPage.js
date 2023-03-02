@@ -17,7 +17,7 @@ function PostPage() {
     const handleMount = async () => {
       try {
         const [{ data: post }] = await Promise.all([
-          axiosReq.get(`/posts/${id}`),
+          axiosReq.get(`/post/${id}`),
         ]);
         setPost({ results: [post] });
         console.log(post);
