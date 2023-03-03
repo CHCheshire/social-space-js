@@ -34,6 +34,8 @@ The Social Space is designed to be where users can make posts and reviews about 
 
   If the user wants, they also have the option to sign out of their account too.
 
+![Sign-Out](documentation/sign-out.png)
+
 - __A Blog Post__
 
   So here is a blog post itself: The title and image are held within a masthead at the top and the body of the blog itself is below. If an image wasn't selected, it would default to a standard image.
@@ -43,6 +45,10 @@ The Social Space is designed to be where users can make posts and reviews about 
 - __Review__ 
 
   A review is set up very similarly to the blog post but asks for different information. It requires the user to put in a rating out of 10 for the thing they're reviewing.
+
+-__Comment__
+
+  A user can comment on a post which they can also edit afterwards. Only user who made their own comments can edit and delete them. 
 
 ![Comment](documentation/comment.png)
 
@@ -60,9 +66,21 @@ The Social Space is designed to be where users can make posts and reviews about 
 
 As mentioned, this is sadly project breaking; If users can't sign in, they can't interact with the website in anyway. I can only say that everything should work in theory however that clearly isn't the case. 
 
+I was able to fix the above issue eventually as the issue stemmed from the index.js file. This file did not contain the CurrentUserProvider which was stopping users from signing in. Once this was added, users can now create posts, make comments and edit them as well. 
+
+There are sadly still some issues with the project; The user profile, once made, is not editable and the reviews section was not made due to time constraints and bugs. With regards to the users profile, I wanted to to strip away the followers, likes and posts from the walkthrough. Although this is less functionality, I wanted it to be different and the user could still edit their profile such as username and password. However I was struggling to get this to work and sadly ran out of time for this. 
+
+The same goes for the reviews, I wanted to add them in and have their own feed for them. However the feed wasn't working and was erroring which I also was not able to finish due to time constraints. 
+
+With the comments, there were some issues with those at first as the API wasn't speaking properly with the front end and was generating a 500 error. This was resolved due to me forgetting to add the 'id' field in the PostSerializer on the API. Once this was added, the users can now post comments. The image field was also acting for a similar reason and I had to rename the places where the front end called 'image' for 'featured_image'. Once this was resolved, the users can now add images and display them on the posts. 
+
 Other forms of testing I've done is made sure that things scale down for mobile users which it does thanks to Bootstrap. The website pages that are available scale down to mobile views nicely and are easily accessible on different screen sizes as well. 
 
 ![Sign-in-mobile](documentation/sign-in-mobile.png)
+
+Following in on from the feedback I had gotten, I had changed the font on the sign in page as well as some of the colors on the page to help users see things more clearly. 
+
+![Updated-Sign-in-mobile](documentation/sign-in-mobile-updated.png)
 
 ## Data Models 
 
@@ -80,6 +98,8 @@ Other forms of testing I've done is made sure that things scale down for mobile 
 
   ![data-profile](documentation/profile-data.png)
 
+
+
  ### Agile methodology
 
  For the Agile Methodology, I used the project board on github to plan out my project. For this, I had selected issues and moved them across to the corresponding column when they either being started, worked on or had been completed. I marked each of these as issues and also added comments to them were appropriate as well. Once these were added to the done section, I would mark these issues as closed as well. 
@@ -87,6 +107,11 @@ Other forms of testing I've done is made sure that things scale down for mobile 
  ![story-board](documentation/storyboard.png)
 
 
+ ### UX Design
+
+ For the UX design, I had taken a similar approach to what was on the walkthrough and what I had done on my previous project, Project Blog. I wanted a minimalist design to it; a navbar at the top that the user can use to navigate around the website and the main bulk of the website content in the middle of screen. This keeps what's important, the posts, in the main field of view of the user and also doesn't clutter up the screen either. As this was taking inspiration from work I had done before, I hadn't taken any designs of this work. I simply tried to emulate the designs I had done before as I knew that they were good design practices. 
+
+![ux-design-of-the-site](documentation/ux-design.png)
 
 ### Validator Testing 
 
@@ -160,7 +185,11 @@ Other forms of testing I've done is made sure that things scale down for mobile 
   - [django-crispy-forms](https://pypi.org/project/django-crispy-forms/1.14.0/) 
   - [gunicorn](https://pypi.org/project/gunicorn/20.1.0/)
   - [psycopg2](https://pypi.org/project/psycopg2/2.9.3/) 
-
+  - [react] (https://reactjs.org/)
+  - [react-moment] (https://www.npmjs.com/package/react-moment)
+  - [react-bootstrap] (https://www.npmjs.com/package/react-bootstrap)
+  
+ 
 ### Programs & Tools
 
 - [Google Fonts:](https://fonts.google.com/)
