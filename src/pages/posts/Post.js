@@ -13,7 +13,6 @@ const Post = (props) => {
     author,
     profile_id,
     profile_image,
-    comments_count,
     likes_count,
     like_id,
     title,
@@ -21,7 +20,7 @@ const Post = (props) => {
     featured_image,
     updated_at,
     postPage,
-    setPost,
+    setPosts,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -44,7 +43,7 @@ const Post = (props) => {
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
-      setPost((prevPosts) => ({
+      setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
@@ -60,7 +59,7 @@ const Post = (props) => {
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
-      setPost((prevPosts) => ({
+      setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
@@ -96,7 +95,7 @@ const Post = (props) => {
         </Media>
       </Card.Body>
       <Link to={`/post/${id}`}>
-        <Card.Img src={featured_image} alt={title} />
+        <Card.Img className={styles.Img} src={featured_image} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
@@ -125,11 +124,9 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {likes_count}
           <Link to={`/post/${id}`}>
             <i className="far fa-comments" />
           </Link>
-          {comments_count}
         </div>
       </Card.Body>
     </Card>

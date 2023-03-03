@@ -27,3 +27,7 @@
     color: #f85032;
   }
   
+ .Img {
+    max-height: 400px;
+    max-width: 300px;
+ }
