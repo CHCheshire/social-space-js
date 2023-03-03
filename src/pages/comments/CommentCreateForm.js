@@ -27,11 +27,11 @@ function CommentCreateForm(props) {
         ...prevComments,
         results: [data, ...prevComments.results],
       }));
-      setPost((prevPost) => ({
+      setPost((prevPosts) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
+            ...prevPosts.results[0],
+            comments_count: prevPosts.results[0].comments_count + 1,
           },
         ],
       }));
