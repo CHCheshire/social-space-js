@@ -28,7 +28,7 @@ const Post = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/posts/${id}/edit`);
+    history.push(`/post/${id}/edit`);
   };
 
   const handleDelete = async () => {
