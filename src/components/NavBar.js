@@ -27,27 +27,7 @@ const NavBar = () => {
   };
 
   const addIcons = <>
-    <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/post/create"
-      ><i className="fa-solid fa-pen"></i>Add Post</NavLink>
-
-      <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/reviews/create"
-    ><i className="fa-solid fa-pen"></i>Add Review</NavLink>
   </>
-
-  const addReviewIcon = (
-    <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/reviews/create"
-      ><i className="fa-solid fa-pen"></i>Add Review</NavLink>
-  )
-
   const loggedInIcons = <>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
@@ -58,7 +38,19 @@ const NavBar = () => {
         to={`/profiles/${currentUser?.profile_id}`}
       >
         <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-      </NavLink></>;
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/post/create"
+      ><i className="fa-solid fa-pen"></i>Add Post</NavLink>
+
+      <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/reviews/create"
+    ><i className="fa-solid fa-pen"></i>Add Review</NavLink>
+    </>;
   const loggedOutIcons = (
     <>
       <NavLink
