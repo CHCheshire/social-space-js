@@ -58,8 +58,8 @@ function ReviewCreateForm() {
     formData.append("image", imageInput.current.files[0]);
 
     try {
-      const { data } = await axiosReq.Review("/Reviews/", formData);
-      history.push(`/Reviews/${data.id}`);
+      const { data } = await axiosReq.post("/reviews/", formData);
+      history.push(`/reviews/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {

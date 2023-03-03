@@ -18,7 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 function ReviewsPage({ message, filter = "" }) {
-  const [reviews, setReviews] = useState({ results: [] });
+  const [review, setReviews] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -65,15 +65,15 @@ function ReviewsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {reviews.results.length ? (
+            {review.results.length ? (
               <InfiniteScroll
-                children={reviews.results.map((review) => (
+                children={review.results.map((review) => (
                   <Review key={review.id} {...review} setReviews={setReviews} />
                 ))}
-                dataLength={reviews.results.length}
+                dataLength={review.results.length}
                 loader={<Asset spinner />}
-                hasMore={!!reviews.next}
-                next={() => fetchMoreData(Reviews, setReviews)}
+                hasMore={!!review.next}
+                next={() => fetchMoreData(review, setReviews)}
               />
             ) : (
               <Container className={appStyles.Content}>

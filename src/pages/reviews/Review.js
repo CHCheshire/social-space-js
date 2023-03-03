@@ -28,7 +28,7 @@ const Review = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.review("/likes/", { review: id });
+      const { data } = await axiosRes.post("/likes/", { review: id });
       setReviews((prevReviews) => ({
         ...prevReviews,
         results: prevReviews.results.map((review) => {
@@ -72,7 +72,7 @@ const Review = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/Reviews/${id}`}>
+      <Link to={`/reviews/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
@@ -103,7 +103,7 @@ const Review = (props) => {
             </OverlayTrigger>
           )}
           {likes_count}
-          <Link to={`/Reviews/${id}`}>
+          <Link to={`/reviews/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}
