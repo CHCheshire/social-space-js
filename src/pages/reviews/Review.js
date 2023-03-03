@@ -9,7 +9,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 const Review = (props) => {
   const {
     id,
-    owner,
+    author,
     profile_id,
     profile_image,
     comments_count,
@@ -24,7 +24,7 @@ const Review = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  const is_author = currentUser?.username === author;
 
   const handleLike = async () => {
     try {
@@ -64,11 +64,11 @@ const Review = (props) => {
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
-            {owner}
+            {author}
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && reviewPage && "..."}
+            {is_author && reviewPage && "..."}
           </div>
         </Media>
       </Card.Body>
@@ -79,7 +79,7 @@ const Review = (props) => {
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.ReviewBar}>
-          {is_owner ? (
+          {is_author ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't like your own Review!</Tooltip>}
