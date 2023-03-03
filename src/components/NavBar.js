@@ -35,21 +35,8 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to={`/profiles/${currentUser?.profile_id}`}
-      >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
         to="/post/create"
       ><i className="fa-solid fa-pen"></i>Add Post</NavLink>
-
-      <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/reviews/create"
-    ><i className="fa-solid fa-pen"></i>Add Review</NavLink>
     </>;
   const loggedOutIcons = (
     <>
