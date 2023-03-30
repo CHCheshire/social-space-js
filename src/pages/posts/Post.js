@@ -10,10 +10,9 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 const Post = (props) => {
   const {
     id,
-    author,
+    owner,
     profile_id,
     profile_image,
-    likes_count,
     like_id,
     title,
     content,
@@ -24,7 +23,7 @@ const Post = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_author = currentUser?.username === author;
+  const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
   const handleEdit = () => {
@@ -81,11 +80,11 @@ const Post = (props) => {
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
-            {author}
+            {owner}
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_author && postPage && (
+            {is_owner && postPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
@@ -101,7 +100,7 @@ const Post = (props) => {
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.PostBar}>
-          {is_author ? (
+          {is_owner ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}

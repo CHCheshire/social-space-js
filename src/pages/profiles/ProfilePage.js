@@ -38,6 +38,8 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  console.log(profile?.owner);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -118,8 +120,8 @@ function ProfilePage() {
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
-          children={profilePosts.results.map((post) => (
-            <Post key={post.id} {...post} setPosts={setProfilePosts} />
+          children={profilePosts.results.map((posts) => (
+            <Post key={posts.id} {...posts} setPosts={setProfilePosts} />
           ))}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}
